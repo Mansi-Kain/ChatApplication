@@ -232,16 +232,14 @@ All APIs should work directly using this sample data.
         );
 
 3.  chat_participants Table
-
-   (For many-to-many relationship)
-
-    CREATE TABLE chat_participants (
-    chat_id VARCHAR(50),
-    user_id VARCHAR(50),
-    PRIMARY KEY (chat_id, user_id),
-    FOREIGN KEY (chat_id) REFERENCES chats(chat_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-    );
+  
+        CREATE TABLE chat_participants (
+        chat_id VARCHAR(50),
+        user_id VARCHAR(50),
+        PRIMARY KEY (chat_id, user_id),
+        FOREIGN KEY (chat_id) REFERENCES chats(chat_id),
+        FOREIGN KEY (user_id) REFERENCES users(user_id)
+        );
 
 4.  messages Table
 
@@ -265,4 +263,5 @@ All APIs should work directly using this sample data.
         FOREIGN KEY (user_id) REFERENCES users(user_id)
         
         );
+
 
