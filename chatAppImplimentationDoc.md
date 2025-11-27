@@ -204,7 +204,7 @@ return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("erro
 
 ## 8. Dummy Data Requirements
 
-## Windsurf must auto-generate dummy data inside repositories (in-memory).
+## Auto-generate dummy data inside repositories (in-memory).
 Example:
 5 users
 2 chats
@@ -215,49 +215,54 @@ All APIs should work directly using this sample data.
 ### DB Entities / DB Schema (Optional – for future DB connection)
 
 1. users Table
-CREATE TABLE users (
-user_id VARCHAR(50) PRIMARY KEY,
-name VARCHAR(100) NOT NULL,
-phone_no VARCHAR(20),
-last_seen_timestamp TIMESTAMP
-);
+   
+        CREATE TABLE users (
+        user_id VARCHAR(50) PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        phone_no VARCHAR(20),
+        last_seen_timestamp TIMESTAMP
+        );
 
 2. chats Table
-CREATE TABLE chats (
-chat_id VARCHAR(50) PRIMARY KEY,
-is_group BOOLEAN NOT NULL,
-name VARCHAR(100)
-);
+   
+        CREATE TABLE chats (
+        chat_id VARCHAR(50) PRIMARY KEY,
+        is_group BOOLEAN NOT NULL,
+        name VARCHAR(100)
+        );
 
 3.  chat_participants Table
 
-(For many-to-many relationship)
+   (For many-to-many relationship)
 
-CREATE TABLE chat_participants (
-chat_id VARCHAR(50),
-user_id VARCHAR(50),
-PRIMARY KEY (chat_id, user_id),
-FOREIGN KEY (chat_id) REFERENCES chats(chat_id),
-FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
+    CREATE TABLE chat_participants (
+    chat_id VARCHAR(50),
+    user_id VARCHAR(50),
+    PRIMARY KEY (chat_id, user_id),
+    FOREIGN KEY (chat_id) REFERENCES chats(chat_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    );
 
 4.  messages Table
-CREATE TABLE messages (
-message_id VARCHAR(50) PRIMARY KEY,
-chat_id VARCHAR(50) NOT NULL,
-sender_id VARCHAR(50) NOT NULL,
-content TEXT,
-timestamp TIMESTAMP,
-FOREIGN KEY (chat_id) REFERENCES chats(chat_id),
-FOREIGN KEY (sender_id) REFERENCES users(user_id)
-);
 
-5. read_receipts Table
-CREATE TABLE read_receipts (
-message_id VARCHAR(50),
-user_id VARCHAR(50),
-PRIMARY KEY (message_id, user_id),
-FOREIGN KEY (message_id) REFERENCES messages(message_id),
-FOREIGN KEY (user_id) REFERENCES users(user_id)
+        CREATE TABLE messages (
+        message_id VARCHAR(50) PRIMARY KEY,
+        chat_id VARCHAR(50) NOT NULL,
+        sender_id VARCHAR(50) NOT NULL,
+        content TEXT,
+        timestamp TIMESTAMP,
+        FOREIGN KEY (chat_id) REFERENCES chats(chat_id),
+        FOREIGN KEY (sender_id) REFERENCES users(user_id)
+        );
 
-);
+6. read_receipts Table
+
+        CREATE TABLE read_receipts (
+        message_id VARCHAR(50),
+        user_id VARCHAR(50),
+        PRIMARY KEY (message_id, user_id),
+        FOREIGN KEY (message_id) REFERENCES messages(message_id),
+        FOREIGN KEY (user_id) REFERENCES users(user_id)
+        
+        );
+
