@@ -3,7 +3,7 @@ Chat Application – Implementation Document
 This document defines the complete specification for building the chat backend using Spring Boot (no DB, in-memory storage).
 Windsurf should generate all classes, controllers, services, in-memory repositories, and WebSocket modules based on this file.
 
-1. Project Overview
+## 1. Project Overview
 
 Build a backend for a chat application supporting:
 
@@ -15,7 +15,7 @@ Build a backend for a chat application supporting:
 - In-memory dummy data (no database)
   - Production-style layered architecture
 
-2. Entities (Domain Models)
+## 2. Entities (Domain Models)
    ## 2.1 User
        class User {
        String userId;
@@ -42,7 +42,7 @@ Build a backend for a chat application supporting:
          Set<String> readByUserIds;
          }
   
-3. In-Memory Database (Repositories)
+## 3. In-Memory Database (Repositories)
 Repositories will store dummy data so the APIs run without any DB.
 
     3.1 UserRepository
@@ -61,7 +61,7 @@ Repositories will store dummy data so the APIs run without any DB.
     Preload 
     - 10 sample messages linked to chats.
 
-4. Class Diagram (Text UML)
+## 4. Class Diagram (Text UML)
 
 UserController ----------> UserService ----------> UserRepository
 
@@ -73,7 +73,7 @@ ReadReceiptController ----> ReadReceiptService --> MessageRepository
 
 TypingController (WebSocket) ----> TypingService --> InMemoryStore 
 
-5. API Contracts
+## 5. API Contracts
 
 ## 5.1 API to search User
 Method : GET /api/users/search?name={name}
@@ -166,7 +166,7 @@ WebSocket Endpoint
 In-Memory Storage Structure
 Map<String, Set<String>> chatTypingMap;
 
-6. Services Definition
+## 6. Services Definition
    ## 6.1 UserService
    - List<User> searchUsers(String query);
    - User getUser(String userId);
@@ -182,7 +182,7 @@ Map<String, Set<String>> chatTypingMap;
     - void setTyping(String chatId, String userId, boolean typing);
     - Set<String> getTypingUsers(String chatId);
 
-7. Error Handling Guidelines
+## 7. Error Handling Guidelines
 All controllers must use:
 Status Codes :
 - 200 OK → success
@@ -202,7 +202,7 @@ return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", e.getMes
 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "Something went wrong"));
 }
 
-8. Dummy Data Requirements
+## 8. Dummy Data Requirements
 
 ## Windsurf must auto-generate dummy data inside repositories (in-memory).
 Example:
@@ -214,7 +214,7 @@ All APIs should work directly using this sample data.
 
 ### DB Entities / DB Schema (Optional – for future DB connection)
 
-## 1 users Table
+1. users Table
 CREATE TABLE users (
 user_id VARCHAR(50) PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
@@ -222,14 +222,14 @@ phone_no VARCHAR(20),
 last_seen_timestamp TIMESTAMP
 );
 
-## 2 chats Table
+2. chats Table
 CREATE TABLE chats (
 chat_id VARCHAR(50) PRIMARY KEY,
 is_group BOOLEAN NOT NULL,
 name VARCHAR(100)
 );
 
-## 3 chat_participants Table
+3.  chat_participants Table
 
 (For many-to-many relationship)
 
@@ -241,7 +241,7 @@ FOREIGN KEY (chat_id) REFERENCES chats(chat_id),
 FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-## 4 messages Table
+4.  messages Table
 CREATE TABLE messages (
 message_id VARCHAR(50) PRIMARY KEY,
 chat_id VARCHAR(50) NOT NULL,
@@ -252,11 +252,12 @@ FOREIGN KEY (chat_id) REFERENCES chats(chat_id),
 FOREIGN KEY (sender_id) REFERENCES users(user_id)
 );
 
-## 5 read_receipts Table
+5. read_receipts Table
 CREATE TABLE read_receipts (
 message_id VARCHAR(50),
 user_id VARCHAR(50),
 PRIMARY KEY (message_id, user_id),
 FOREIGN KEY (message_id) REFERENCES messages(message_id),
 FOREIGN KEY (user_id) REFERENCES users(user_id)
+
 );
