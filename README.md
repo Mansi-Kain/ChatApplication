@@ -149,3 +149,9 @@ All data is preloaded into memory at startup so that the system is functional wi
 ## Testing API 
 <img width="1753" height="672" alt="image" src="https://github.com/user-attachments/assets/e4e16a67-0bbe-410d-b994-bceead5b9045" />
 
+<img width="1380" height="380" alt="image" src="https://github.com/user-attachments/assets/a873902d-babf-483f-bc59-cb03cfa0d925" />
+
+<img width="1376" height="820" alt="image" src="https://github.com/user-attachments/assets/6d6b425b-deb1-4b12-a812-8fb45f24d086" />
+
+
+
