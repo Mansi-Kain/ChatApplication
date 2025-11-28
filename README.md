@@ -147,6 +147,12 @@ Repositories store:
 All data is preloaded into memory at startup so that the system is functional without a database.
 
 ## Testing API 
+<img width="1125" height="817" alt="image" src="https://github.com/user-attachments/assets/20284a9e-d34f-4678-bad9-80833d30d151" />
+
+<img width="953" height="783" alt="image" src="https://github.com/user-attachments/assets/b2309899-52d7-4481-b8e0-8f858c01da22" />
+
+<img width="1445" height="356" alt="image" src="https://github.com/user-attachments/assets/9a4deb8b-b6e1-45cb-add3-36dd1776c431" />
+
 <img width="1753" height="672" alt="image" src="https://github.com/user-attachments/assets/e4e16a67-0bbe-410d-b994-bceead5b9045" />
 
 <img width="1380" height="380" alt="image" src="https://github.com/user-attachments/assets/a873902d-babf-483f-bc59-cb03cfa0d925" />
