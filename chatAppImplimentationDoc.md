@@ -66,12 +66,13 @@ Repositories will store dummy data so the APIs run without any DB.
 UserController ----------> UserService ----------> UserRepository
 
 SearchController --------> SearchService -------->
-|-------------> UserRepository
-|-------------> MessageRepository
+                               |-------------> UserRepository
+                               |-------------> MessageRepository
 
 ReadReceiptController ----> ReadReceiptService --> MessageRepository
 
-TypingController (WebSocket) ----> TypingService --> InMemoryStore 
+TypingController (WebSocket) ----> (Broadcasts directly — No Service / No Storage)
+
 
 ## 5. API Contracts
 
@@ -163,8 +164,6 @@ WebSocket Endpoint
     "typingUsers": ["U2"]
     }
 
-In-Memory Storage Structure
-Map<String, Set<String>> chatTypingMap;
 
 ## 6. Services Definition
    ## 6.1 UserService
@@ -263,6 +262,7 @@ All APIs should work directly using this sample data.
         FOREIGN KEY (user_id) REFERENCES users(user_id)
         
         );
+
 
 
 
