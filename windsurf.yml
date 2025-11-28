@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 rules:
   general:
     - Always follow clean code principles: small methods, meaningful names, single responsibility.
@@ -40,3 +41,47 @@ rules:
 
 
 
+=======
+rules:
+  general:
+    - Always follow clean code principles: small methods, meaningful names, single responsibility.
+    - Never leave unused imports, unused variables, or commented-out code.
+    - Always write readable and maintainable code over clever code.
+    - Prefer composition over inheritance.
+
+  project-structure:
+    - Organize Spring Boot backend as:
+        src/main/java/<base-package>/
+        controller/
+        service/
+        service/impl/
+        repository/
+        entity/
+        dto/
+        exception/
+        config/
+        util/
+    - Controllers must never contain business logic, only request/response mapping.
+    - Services must contain business logic and always use interfaces.
+    - Repositories must remain thin and follow Spring Data JPA.
+    - DTOs must be used for API requests/responses (never expose entity directly).
+
+  spring-boot:
+    - Use @Service, @Repository, @RestController, @Getters , @Setters , @AllArgsConstructor properly.
+    - Use constructor-based dependency injection (@Autowired is discouraged).
+    - Always handle errors using a global exception handler using @ControllerAdvice.
+    - Use ResponseEntity for all controller responses.
+    - Return meaningful HTTP status codes.
+    - Use Lombok annotations @Data, @Builder, @NoArgsConstructor, @AllArgsConstructor.
+
+  naming-conventions:
+    - Controllers end with "Controller".
+    - Service interfaces end with "Service".
+    - Service implementations end with "ServiceImpl".
+    - JPA entities use CamelCase and singular names.
+    - Repositories end with "Repository".
+    - DTO classes end with "Request", "Response", or "Dto".
+
+
+
+>>>>>>> e05aec4 (finalchanges)
