@@ -29,6 +29,7 @@ public class TypingStatusDTO {
         this.userId = userId;
     }
 
+
     public boolean isTyping() {
         return typing;
     }
