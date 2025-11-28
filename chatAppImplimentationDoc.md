@@ -16,7 +16,7 @@ Build a backend for a chat application supporting:
   - Production-style layered architecture
 
 ## 2. Entities (Domain Models)
-   ## 2.1 User
+    2.1 User
        class User {
        String userId;
        String name;
@@ -24,7 +24,7 @@ Build a backend for a chat application supporting:
        LocalDateTime lastSeenTimeStamp;
        }
 
-    ## 2.2 Chat
+     2.2 Chat
          class Chat {
          String chatId;
          List<String> participants;
@@ -32,7 +32,7 @@ Build a backend for a chat application supporting:
          String name; // only for group chats
          }
     
-    ## 2.3 Message
+     2.3 Message
          class Message {
          String messageId;
          String chatId;
@@ -263,5 +263,6 @@ All APIs should work directly using this sample data.
         FOREIGN KEY (user_id) REFERENCES users(user_id)
         
         );
+
 
 
