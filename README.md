@@ -130,7 +130,7 @@ Server → All Chat Participants
 The server keeps track of typing status in an in-memory map:
 Map<String, Set<String>> chatTypingMap
 
-🏗️ Architecture
+## Architecture
 
 A clean 3-layer design:
 
@@ -145,3 +145,7 @@ Repositories store:
 5. Read receipts
 
 All data is preloaded into memory at startup so that the system is functional without a database.
+
+## Testing API 
+<img width="1753" height="672" alt="image" src="https://github.com/user-attachments/assets/e4e16a67-0bbe-410d-b994-bceead5b9045" />
+
